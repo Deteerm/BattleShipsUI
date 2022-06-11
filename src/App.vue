@@ -1,5 +1,8 @@
 <script setup lang="ts">
-import { RouterLink, RouterView } from "vue-router";
+import { RouterView } from "vue-router";
+import { useStore } from '@/store/index'
+
+const store = useStore()
 </script>
 
 <template>
