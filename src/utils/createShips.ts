@@ -1,3 +1,3 @@
-export default function createShips(ships: object[]) {
-  console.log(ships)
+export default function createShips<type>(stateData: type) {
+  console.log(stateData)
 }

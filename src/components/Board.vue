@@ -1,25 +1,19 @@
 <template>
   <section class="game-grid">
-    <Field v-for="n in 100" :n="n" @click="handleClick(n)"></Field>
+    <FieldComponent v-for="field in store.fields" :field="field" @click="handleClick(field)"></FieldComponent>
   </section>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue'
+<script setup lang="ts">
+import FieldComponent from '@/components/FieldComponent.vue'
+import type Field from '@/types/Field'
+import { useStore } from '@/store/index'
 
-import Field from '@/components/Field.vue'
+const store = useStore()
+const emit = defineEmits(['guess'])
 
-export default defineComponent({
-    setup() {
-        return {};
-    },
-    components: { Field },
-    methods: {
-      handleClick(payload: Number) {
-        this.$emit('guess', payload)
-      }
-    }
-})
+const handleClick = (payload: Field): void => { emit('guess', payload) }
+
 </script>
 
 <style scoped>

@@ -12,11 +12,9 @@ const handleGuess = (payload: number) => {
 </script>
 
 <template>
-  <main>
-    <div class="container">
-      <Board @guess="handleGuess($event)" class="board" />
-      <Chat :guess="guess" />
-    </div>
+  <main class="container">
+    <Board @guess="handleGuess($event)" class="board" />
+    <Chat :guess="guess" />
   </main>
 </template>
 
