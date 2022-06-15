@@ -1,5 +1,5 @@
 <template>
-  <div @click="markAsChecked" class="field" :class="{'checked': field.checked}">
+  <div @click="markAsChecked" class="field" :class="{'checked': field.checked, 'ship-hit': true /*field.checked*/ && field.hasShip}">
     {{ field.number }}
   </div>
 </template>
@@ -34,5 +34,12 @@ const markAsChecked = () => {
 
   .checked {
     background-color: rgb(143, 206, 169);
+  }
+
+  .ship-hit {
+    background-color: red;
+  }
+  .ship-hit:before {
+    content: 'X'
   }
 </style>

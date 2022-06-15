@@ -1,6 +1,7 @@
 type Field = {
   number: number,
-  checked: boolean
+  checked: boolean,
+  hasShip: boolean
 }
 
 export default Field

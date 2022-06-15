@@ -1,24 +1,22 @@
 <template>
   <div ref="chat" class="chat">
-    <p v-for="guess in guesses">{{ guess && guess }}</p>
+    <p v-for="guess in state.guesses">{{ guess && guess }}</p>
   </div>
 </template>
 
 <script setup lang="ts">
-import {ref, watch} from 'vue';
+import {nextTick, ref, watch} from 'vue';
+import { useStore } from '@/store/index'
 
-const props = defineProps({
-  guess: { type: Number, required: true }
-})
+const state = useStore()
+const chat = ref<HTMLElement>()
 
-const chat = ref(null)
-const guesses = ref<number[]>([])
-
-watch(() => props.guess, () => {
-  guesses.value.push(props.guess)
-  if (guesses.value.length > 25) {
-    guesses.value.shift()
-  }
+watch(state.guesses, () => {
+  nextTick(() => { 
+    if (chat.value) {
+      chat.value.scroll({ top: chat.value.scrollHeight, behavior: 'smooth'})
+    }
+  })
 })
 </script>
 
@@ -26,7 +24,7 @@ watch(() => props.guess, () => {
   .chat {
     box-shadow: 0px 0px 6px 2px rgba(0, 0, 255, .2);
     width: 10vw;
-    height: auto;
+    height: 70vw;
     max-height: 600px;
     overflow-y: scroll;
     -ms-overflow-style: none;  /* IE and Edge */
