@@ -36,23 +36,15 @@ watch(() => state.shipsAfloat, () => {
 	margin-left: auto;
 }
 
-a { 
-  box-sizing: border-box;
-	margin: 0 20px 0 0;
-    color: black;
-    text-decoration: none;
-}
-
 a {
-			--color: #646b8c;
-
+			--color: black;
 			position: relative;
 			text-decoration: none;
 			color: var(--color);
 			font-family: "Inter", sans-serif;
 }
 			a:before {
-				--line-width: 90%;
+				--line-width: 95%;
 				--line-height: 1px;
 				--line-easing: ease;
 				--line-transition-duration: 300ms;
@@ -60,7 +52,7 @@ a {
 				content: "";
 				position: absolute;
 				left: 0;
-				bottom: 4px;
+				bottom: 5px;
 				width: var(--line-width);
 				height: var(--line-height);
 				transform-origin: right;
