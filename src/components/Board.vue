@@ -13,7 +13,6 @@ const store = useStore()
 const emit = defineEmits(['guess'])
 
 const handleClick = (payload: Field): void => { emit('guess', payload) }
-
 </script>
 
 <style scoped>
@@ -25,7 +24,7 @@ const handleClick = (payload: Field): void => { emit('guess', payload) }
     display: grid;
     grid-template-columns: repeat(10, 1fr);
     grid-template-rows: repeat(10, 1fr);
-    background-color: rgb(119, 245, 171);
+    background-color: #d4f1f9;
     border: 1px solid black;
   }
 </style>

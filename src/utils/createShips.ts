@@ -74,4 +74,5 @@ function placeShip(state: StateData, shipSize: number): void | Function {
   }
 
   state.ships.push(ship);
+  state.shipsAfloat += 1;
 }

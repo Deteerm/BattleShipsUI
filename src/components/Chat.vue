@@ -1,14 +1,16 @@
 <template>
   <div ref="chat" class="chat">
-    <p v-for="guess in state.guesses">{{ guess && guess }}</p>
+    <div v-for="guess in state.guesses">
+      <p class="msg" :class="{'sunken': guess === 'Hit and sunken!'}">{{ guess }}</p>
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
 import {nextTick, ref, watch} from 'vue';
-import { useStore } from '@/store/index'
+import { useStore, type StateData} from '@/store/index'
 
-const state = useStore()
+const state: StateData = useStore()
 const chat = ref<HTMLElement>()
 
 watch(state.guesses, () => {
@@ -23,7 +25,7 @@ watch(state.guesses, () => {
 <style>
   .chat {
     box-shadow: 0px 0px 6px 2px rgba(0, 0, 255, .2);
-    width: 10vw;
+    width: 200px;
     height: 70vw;
     max-height: 600px;
     overflow-y: scroll;
@@ -34,7 +36,25 @@ watch(state.guesses, () => {
     text-align: center;
   }
 
+  @media screen and (max-width: 880px) {
+    .chat {
+      height: 200px !important;
+      width: 70vw !important;
+      margin-top: 1.5rem;
+    }
+  }
+
   .chat::-webkit-scrollbar {
     display: none;
+  }
+
+  .msg {
+    font-size: 1.2rem;
+    border-bottom: 1px solid black;
+  }
+
+  .sunken {
+    background-color: black;
+    color: white;
   }
 </style>
